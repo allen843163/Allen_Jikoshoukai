@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetStart="@id/start"
+        motion:constraintSetEnd="@id/end"
+        android:id="@id/layout_main"
+        motion:autoTransition="jumpToStart"
+        motion:duration="350">
+        <KeyFrameSet>
+            <KeyAttribute
+                motion:motionTarget="@id/iv_global_ripple"
+                motion:framePosition="40">
+                <CustomAttribute
+                    motion:attributeName="alpha"
+                    motion:customFloatValue="1.0"/>
+            </KeyAttribute>
+        </KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint android:id="@id/iv_global_ripple">
+            <Transform
+                android:scaleX="0"
+                android:scaleY="0"
+                android:elevation="50dp"
+                android:translationZ="50dp"/>
+            <CustomAttribute
+                motion:attributeName="alpha"
+                motion:customFloatValue="0.0"/>
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet
+        android:id="@+id/end">
+        <Constraint android:id="@id/iv_global_ripple">
+            <Transform
+                android:scaleX="3"
+                android:scaleY="3"
+                android:elevation="50dp"
+                android:translationZ="50dp"/>
+            <CustomAttribute
+                motion:attributeName="alpha"
+                motion:customFloatValue="0"/>
+        </Constraint>
+    </ConstraintSet>
+</MotionScene>
