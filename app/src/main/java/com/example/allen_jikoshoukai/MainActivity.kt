@@ -1,5 +1,6 @@
 package com.example.allen_jikoshoukai
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -14,9 +15,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import android.view.MotionEvent
+import android.view.View
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import com.example.allen_jikoshoukai.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.app_bar_main.view.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
@@ -24,12 +29,16 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainBinding
 
+    private val mainViewModel : MainViewModel by viewModel()
+
+    @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         setSupportActionBar(binding.includeContentGlobal.toolbar)
-        Timber.d("allen")
+
         val fab: FloatingActionButton = binding.includeContentGlobal.fab
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -48,6 +57,19 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        mainViewModel.actionBarVisibilityController.observe(this, Observer {
+            if(it) {
+                binding.includeContentGlobal.toolbar.visibility = View.VISIBLE
+
+                binding.includeContentGlobal.fab.visibility = View.VISIBLE
+            }
+            else {
+                binding.includeContentGlobal.toolbar.visibility = View.GONE
+
+                binding.includeContentGlobal.fab.visibility = View.GONE
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
