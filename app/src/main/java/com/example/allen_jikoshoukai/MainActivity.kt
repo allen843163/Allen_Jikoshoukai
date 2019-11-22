@@ -60,11 +60,17 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.actionBarVisibilityController.observe(this, Observer {
             if(it) {
+                binding.drawerLayout.closeDrawers()
+
+                binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_OPEN)
+
                 binding.includeContentGlobal.toolbar.visibility = View.VISIBLE
 
                 binding.includeContentGlobal.fab.visibility = View.VISIBLE
             }
             else {
+                binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+
                 binding.includeContentGlobal.toolbar.visibility = View.GONE
 
                 binding.includeContentGlobal.fab.visibility = View.GONE

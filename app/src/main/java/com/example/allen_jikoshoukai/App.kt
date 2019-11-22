@@ -2,6 +2,7 @@ package com.example.allen_jikoshoukai
 
 import android.app.Application
 import com.example.allen_jikoshoukai.di.AppModule
+import com.example.allen_jikoshoukai.di.DataModelModule
 import com.example.allen_jikoshoukai.di.ViewBindingModule
 import com.example.allen_jikoshoukai.di.ViewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -22,7 +23,7 @@ class App : Application() {
             startKoin {
                 androidLogger()
                 androidContext(this@App)
-                modules(listOf(AppModule, ViewModelModule, ViewBindingModule))
+                modules(listOf(AppModule, ViewModelModule, ViewBindingModule, DataModelModule))
             }
         }
     }

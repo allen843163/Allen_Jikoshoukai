@@ -25,6 +25,8 @@ class LaunchFragment : BaseFragment() {
         mainViewModel.actionBarVisibilityController.value = false
 
         binding = FragmentLaunchBinding.inflate(inflater)
+
+        launchViewModel.remoteGetIntroduction()
         
         return binding.root
     }
