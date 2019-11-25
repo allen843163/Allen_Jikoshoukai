@@ -1,10 +1,10 @@
-package com.example.allen_jikoshoukai.ui.home
+package com.example.allen_jikoshoukai.ui.selfintroduction
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class SelfIntroductionViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is home Fragment"

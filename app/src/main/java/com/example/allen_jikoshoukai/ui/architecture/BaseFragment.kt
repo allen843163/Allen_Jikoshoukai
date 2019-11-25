@@ -7,5 +7,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 open class BaseFragment : Fragment()
 {
-    protected val mainViewModel : MainViewModel by sharedViewModel()
+    private val mainViewModel : MainViewModel by sharedViewModel()
+
+    protected fun getMainVM() : MainViewModel {
+        return mainViewModel
+    }
 }

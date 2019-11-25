@@ -12,17 +12,14 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import android.view.MotionEvent
 import android.view.View
-import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.example.allen_jikoshoukai.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.app_bar_main.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -40,29 +37,31 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.includeContentGlobal.toolbar)
 
         val fab: FloatingActionButton = binding.includeContentGlobal.fab
+
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+
         val navView: NavigationView = findViewById(R.id.nav_view)
+
         val navController = findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send
+                R.id.nav_self_introduction, R.id.nav_skills, R.id.nav_background,
+                R.id.nav_education, R.id.nav_hobbies, R.id.nav_interests
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
+
         navView.setupWithNavController(navController)
 
         mainViewModel.actionBarVisibilityController.observe(this, Observer {
             if(it) {
-                binding.drawerLayout.closeDrawers()
-
-                binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_OPEN)
+                binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
 
                 binding.includeContentGlobal.toolbar.visibility = View.VISIBLE
 
