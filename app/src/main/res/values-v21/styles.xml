@@ -5,4 +5,13 @@
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+
+    <style name="Base_DialogFragment_Style" parent="AppTheme">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@color/backgroundDialogWindow</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <!--        <item name="android:maxLines">1</item>-->
+        <!--        <item name="android:maxLength">8</item>-->
+        <!--        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>-->
+    </style>
 </resources>

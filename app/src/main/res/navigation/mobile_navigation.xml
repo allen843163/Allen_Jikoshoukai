@@ -9,10 +9,19 @@
         android:id="@+id/nav_launch"
         android:name="com.example.allen_jikoshoukai.ui.launch.LaunchFragment"
         android:label="launch"
-        tools:layout="@layout/fragment_launch" >
+        tools:layout="@layout/fragment_launch">
         <action
+            app:enterAnim="@anim/nav_anim_enter_01"
+            app:exitAnim="@anim/nav_anim_pop_exit_01"
+            app:popExitAnim="@anim/nav_anim_pop_exit_01"
+            app:popEnterAnim="@anim/nav_anim_enter_01"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/nav_launch"
             android:id="@+id/action_nav_launch_to_nav_self_introduction"
             app:destination="@id/nav_self_introduction" />
+        <action
+            android:id="@+id/action_nav_launch_to_nav_language_select"
+            app:destination="@id/nav_language_select" />
     </fragment>
 
     <fragment
@@ -23,9 +32,10 @@
 
     <fragment
         android:id="@+id/nav_skills"
-        android:name="com.example.allen_jikoshoukai.ui.gallery.GalleryFragment"
+        android:name="com.example.allen_jikoshoukai.ui.skills.SkillsFragment"
         android:label="@string/menu_skills"
-        tools:layout="@layout/fragment_skills" />
+        tools:layout="@layout/fragment_skills" >
+    </fragment>
 
     <fragment
         android:id="@+id/nav_background"
@@ -50,4 +60,9 @@
         android:name="com.example.allen_jikoshoukai.ui.send.SendFragment"
         android:label="@string/menu_interests"
         tools:layout="@layout/fragment_send" />
+
+    <dialog
+        android:id="@+id/nav_language_select"
+        android:name="com.example.allen_jikoshoukai.ui.launch.languageSelect.LanguageSelectDialog"
+        tools:layout="@layout/dialog_language_select"/>
 </navigation>

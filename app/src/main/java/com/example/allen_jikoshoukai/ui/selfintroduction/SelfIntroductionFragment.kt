@@ -2,9 +2,11 @@ package com.example.allen_jikoshoukai.ui.selfintroduction
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.ui.navigateUp
 import com.example.allen_jikoshoukai.databinding.FragmentSelfIntroductionBinding
 import com.example.allen_jikoshoukai.ui.architecture.BaseFragment
 
@@ -26,5 +28,11 @@ class SelfIntroductionFragment : BaseFragment() {
         binding.mainVM = getMainVM()
 
         return binding.root
+    }
+
+    override fun onOptionItemBackClicked(item: MenuItem?) {
+        getSafeNavController()?.navigateUp()
+
+        return
     }
 }

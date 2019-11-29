@@ -2,9 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/layout_launch_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/backgroundPrimary">
+        android:background="@color/backgroundPrimary"
+        app:layoutDescription="@xml/motion_launch_anim_01">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lav_loading"
@@ -16,7 +18,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:lottie_rawRes="@raw/dino_loading"
             app:lottie_loop="true"
-            app:lottie_autoPlay="true"/>
+            app:lottie_autoPlay="true" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>
