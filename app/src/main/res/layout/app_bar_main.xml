@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:clipChildren="false"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -22,12 +24,71 @@
 
     <include layout="@layout/content_main" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/layout_fab_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:layoutDescription="@xml/motion_fab_anim_01">
+
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/layout_fab_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:transformPivotY="120dp"
+            android:transformPivotX="120dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/fab"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:src="@drawable/ic_cached_white_60dp"
+                android:background="@drawable/bg_fab_btn_main"
+                android:scaleType="centerCrop"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/asdasd"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="40dp"
+                app:layout_constraintTop_toTopOf="@id/fab"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/fab"
+                android:background="@drawable/bg_fab_btn_item"
+                android:src="@android:drawable/ic_dialog_email"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/qwerr"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="40dp"
+                app:layout_constraintStart_toStartOf="@id/fab"
+                app:layout_constraintBottom_toTopOf="@id/fab"
+                app:layout_constraintEnd_toEndOf="@id/fab"
+                android:background="@drawable/bg_fab_btn_item"
+                android:src="@drawable/ic_cached_white_60dp"
+                android:scaleType="centerCrop"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/fsadasd"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="40dp"
+                app:layout_constraintTop_toTopOf="@id/qwerr"
+                app:layout_constraintBottom_toBottomOf="@id/qwerr"
+                app:layout_constraintStart_toStartOf="@id/asdasd"
+                android:background="@drawable/bg_fab_btn_item"
+                android:scaleType="center"
+                />
+
+        </androidx.constraintlayout.motion.widget.MotionLayout>
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

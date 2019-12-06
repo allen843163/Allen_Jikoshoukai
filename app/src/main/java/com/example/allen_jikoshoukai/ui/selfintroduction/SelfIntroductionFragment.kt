@@ -31,8 +31,6 @@ class SelfIntroductionFragment : BaseFragment() {
     }
 
     override fun onOptionItemBackClicked(item: MenuItem?) {
-        getSafeNavController()?.navigateUp()
-
         return
     }
 }

@@ -59,10 +59,4 @@ class MainViewModel(application: Application, private val dataModel: MainDataMod
 
         return result
     }
-
-    interface GetIntroductionCallBack{
-        fun onSuccess()
-
-        fun onFailure()
-    }
 }

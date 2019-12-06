@@ -11,7 +11,10 @@
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/layout_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        app:layoutDescription="@xml/motion_dialog_language_select_anim_01">
 
         <androidx.constraintlayout.widget.Guideline
             android:layout_width="wrap_content"
@@ -27,15 +30,21 @@
             app:layout_constraintGuide_percent="0.9"
             android:id="@+id/gl_right_border_01"/>
 
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.95"
+            android:id="@+id/gl_bottom_border_01"/>
+
         <androidx.constraintlayout.motion.widget.MotionLayout
             android:id="@+id/layout_content"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/gl_bottom_border_01"
             app:layout_constraintEnd_toEndOf="@id/gl_right_border_01"
             app:layout_constraintStart_toStartOf="@id/gl_left_border_01"
-            android:background="@color/backgroundDialogPrimary">
+            android:background="@drawable/bg_primary_dialog_round_fillet">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_title"

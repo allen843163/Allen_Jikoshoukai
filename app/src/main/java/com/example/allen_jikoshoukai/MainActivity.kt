@@ -15,11 +15,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MotionEvent
 import android.view.View
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.example.allen_jikoshoukai.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.app_bar_main.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -38,12 +40,30 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.includeContentGlobal.toolbar)
 
-        val fab: FloatingActionButton = binding.includeContentGlobal.fab
+        val fab = binding.includeContentGlobal.fab
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
+        binding.includeContentGlobal.layout_fab_main.setTransitionListener(object : MotionLayout.TransitionListener{
+            override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {
+
+            }
+
+            override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {
+
+            }
+
+            override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {
+                Timber.d("aaaa".plus(p1))
+                Timber.d("aaaa".plus(p2))
+                Timber.d("aaaa".plus(p3))
+            }
+
+            override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
+            }
+
+        })
+//        fab.setOnClickListener { view ->
+//            binding.includeContentGlobal.layout_fab_main.transitionToEnd()
+//        }
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
 
@@ -67,14 +87,14 @@ class MainActivity : AppCompatActivity() {
 
                 binding.includeContentGlobal.toolbar.visibility = View.VISIBLE
 
-                binding.includeContentGlobal.fab.visibility = View.VISIBLE
+                binding.includeContentGlobal.layout_fab_main.visibility = View.VISIBLE
             }
             else {
                 binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
 
                 binding.includeContentGlobal.toolbar.visibility = View.GONE
 
-                binding.includeContentGlobal.fab.visibility = View.GONE
+                binding.includeContentGlobal.layout_fab_main.visibility = View.GONE
             }
         })
     }

@@ -78,6 +78,7 @@ class LaunchFragment : BaseFragment() {
                             R.id.nav_self_introduction
                             , null
                             , NavOptions.Builder()
+                                .setLaunchSingleTop(true)
                                 .setPopUpTo(R.id.nav_launch,true)
                                 .build())
                     }
