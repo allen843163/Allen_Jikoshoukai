@@ -70,12 +70,20 @@ class MainActivity : AppCompatActivity() {
         })
 
         binding.includeContentGlobal.fab_child_home.setOnClickListener{
-            navController.navigate(R.id.nav_self_introduction)
+            when(navController.currentDestination?.id != R.id.nav_self_introduction) {
+                true -> {
+                    navController.navigate(R.id.nav_self_introduction)
+                }
+            }
         }
 
 
         binding.includeContentGlobal.fab_child_language.setOnClickListener{
-            navController.navigate(R.id.nav_language_select)
+            when(navController.currentDestination?.id != R.id.nav_language_select) {
+                true -> {
+                    navController.navigate(R.id.nav_language_select)
+                }
+            }
         }
     }
 
