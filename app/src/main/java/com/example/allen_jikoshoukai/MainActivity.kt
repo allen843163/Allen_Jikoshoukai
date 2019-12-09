@@ -40,46 +40,17 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.includeContentGlobal.toolbar)
 
-        val fab = binding.includeContentGlobal.fab
-
-        binding.includeContentGlobal.layout_fab_main.setTransitionListener(object : MotionLayout.TransitionListener{
-            override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {
-
-            }
-
-            override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {
-
-            }
-
-            override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {
-                Timber.d("aaaa".plus(p1))
-                Timber.d("aaaa".plus(p2))
-                Timber.d("aaaa".plus(p3))
-            }
-
-            override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
-            }
-
-        })
-//        fab.setOnClickListener { view ->
-//            binding.includeContentGlobal.layout_fab_main.transitionToEnd()
-//        }
-
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-
-        val navView: NavigationView = findViewById(R.id.nav_view)
-
         val navController = findNavController(R.id.nav_host_fragment)
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_self_introduction, R.id.nav_skills, R.id.nav_background,
                 R.id.nav_education, R.id.nav_hobbies, R.id.nav_interests
-            ), drawerLayout
+            ), binding.drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        navView.setupWithNavController(navController)
+        binding.navView.setupWithNavController(navController)
 
         mainViewModel.actionBarVisibilityController.observe(this, Observer {
             if(it) {
@@ -97,6 +68,15 @@ class MainActivity : AppCompatActivity() {
                 binding.includeContentGlobal.layout_fab_main.visibility = View.GONE
             }
         })
+
+        binding.includeContentGlobal.fab_child_home.setOnClickListener{
+            navController.navigate(R.id.nav_self_introduction)
+        }
+
+
+        binding.includeContentGlobal.fab_child_language.setOnClickListener{
+            navController.navigate(R.id.nav_language_select)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

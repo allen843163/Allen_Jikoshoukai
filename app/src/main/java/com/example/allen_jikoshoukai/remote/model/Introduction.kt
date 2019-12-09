@@ -54,13 +54,13 @@ data class Interest(
 
 @Parcelize
 data class Skill(
-    val Categorys: List<Category>,
+    val Category: List<Category>,
     val Name: String
 ): Parcelable
 
 @Parcelize
 data class Category(
-    val Details: List<Detail>,
+    val Detail: List<Detail>,
     val Name: String
 ): Parcelable
 

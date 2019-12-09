@@ -15,4 +15,6 @@
     <color name="dialogButtonColor">#000000</color>
     <color name="dialogListItemColor">#222222</color>
 
+    <color name="textDeepBlack">#000000</color>
+
 </resources>

@@ -12,24 +12,30 @@ import com.example.allen_jikoshoukai.R
 import com.example.allen_jikoshoukai.adapter.MySimpleAdapter
 import com.example.allen_jikoshoukai.databinding.FragmentSkillsBinding
 import com.example.allen_jikoshoukai.databinding.ViewpagerSkillCategoryBinding
+import com.example.allen_jikoshoukai.remote.model.Category
 import com.example.allen_jikoshoukai.remote.model.Skill
 import com.example.allen_jikoshoukai.ui.architecture.BaseFragment
 import com.example.allen_jikoshoukai.ui.skills.SkillsViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 class CategoryFragment : BaseFragment() {
-    private val skillsViewModel : SkillsViewModel by viewModel()
+    private val skillsViewModel : SkillsViewModel by sharedViewModel()
 
     lateinit var binding : ViewpagerSkillCategoryBinding
 
-    var skillAdapter = object : MySimpleAdapter<Skill>(
+    var categoryAdapter = object : MySimpleAdapter<Category>(
         mutableListOf()
-        , BR.skillData
-        , R.layout.lv_item_skills
+        , BR.categoryData
+        , R.layout.lv_item_skill_category
     ) {
-        override fun onViewItemSetting(view: View, item: Skill, position: Int) {
+        override fun onViewItemSetting(view: View, item: Category, position: Int) {
             super.onViewItemSetting(view, item, position)
+
+            view.setOnClickListener {
+                skillsViewModel.categoryIndex.value = position
+            }
         }
     }
 
@@ -42,31 +48,35 @@ class CategoryFragment : BaseFragment() {
 
         binding = ViewpagerSkillCategoryBinding.inflate(inflater)
 
-        binding.mainVM = getMainVM()
+        binding.lvCategory.adapter = categoryAdapter
 
-        binding.lvSkills.adapter = skillAdapter
+        skillsViewModel.skillIndex.observe(this, Observer {
+            Timber.d("observer".plus(it))
 
-        getMainVM().languageIndex.observe(this, Observer {
-            when(it >= 0) {
-                true -> {
-                    getMainVM().getIntroductionRes.get()?.let { res->
-                        skillAdapter.getData().clear()
+            categoryAdapter.getData().clear()
 
-                        skillAdapter.getData().addAll( res.Language[it].Skills)
+            getMainVM().languageIndex.value?.let { languageIndex ->
 
-                        skillAdapter.notifyDataSetChanged()
-                    }?: let{
-                        Toast.makeText(this.context, "No Skill Data", Toast.LENGTH_LONG).show()
+                getMainVM().getIntroductionRes.get()?.Language?.get(languageIndex)?.let { language ->
+
+                    if(it >= 0) {
+                        categoryAdapter.getData().addAll(language.Skills[it].Category)
+
+                        binding.tvPath.setText(
+                            language.Skills[it].Name
+                            .plus(" > "))
                     }
+
                 }
             }
+
+            categoryAdapter.notifyDataSetChanged()
         })
 
         return binding.root
     }
 
     override fun onOptionItemBackClicked(item: MenuItem?) {
-        getSafeNavController()
-            ?.navigate(R.id.nav_self_introduction)
+        skillsViewModel.skillIndex.value = -1
     }
 }
