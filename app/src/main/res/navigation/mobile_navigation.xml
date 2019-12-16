@@ -39,15 +39,15 @@
 
     <fragment
         android:id="@+id/nav_background"
-        android:name="com.example.allen_jikoshoukai.ui.slideshow.SlideshowFragment"
+        android:name="com.example.allen_jikoshoukai.ui.background.BackgroundFragment"
         android:label="@string/menu_background"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_background" />
 
     <fragment
         android:id="@+id/nav_education"
-        android:name="com.example.allen_jikoshoukai.ui.tools.ToolsFragment"
+        android:name="com.example.allen_jikoshoukai.ui.education.EducationFragment"
         android:label="@string/menu_education"
-        tools:layout="@layout/fragment_tools" />
+        tools:layout="@layout/fragment_education" />
 
     <fragment
         android:id="@+id/nav_hobbies"

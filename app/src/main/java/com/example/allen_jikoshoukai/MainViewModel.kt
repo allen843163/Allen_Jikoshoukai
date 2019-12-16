@@ -19,8 +19,6 @@ class MainViewModel(application: Application, private val dataModel: MainDataMod
 
     var getIntroductionRes : ObservableField<IntroductionRes> = ObservableField()
 
-    var skillData : MutableLiveData<List<Skill>> = MutableLiveData(emptyList())
-
     var languageIndex : MutableLiveData<Int> = MutableLiveData(-1)
 
     fun setLanguageIndex(index : Int) {
@@ -41,12 +39,6 @@ class MainViewModel(application: Application, private val dataModel: MainDataMod
                     Timber.d(it.Language[0].Name)
 
                     getIntroductionRes.set(it)
-
-                    getIntroductionRes.get()?.let {
-                        Timber.d(it.Language[0].Skills[0].Name)
-
-                        skillData.value = (it.Language[0].Skills)
-                    }
 
                     result.value = Result.success(it)
                 },

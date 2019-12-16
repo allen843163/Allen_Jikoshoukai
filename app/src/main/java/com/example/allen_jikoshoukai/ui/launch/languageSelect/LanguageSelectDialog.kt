@@ -45,8 +45,8 @@ class LanguageSelectDialog : BaseDialog() {
             mutableListOf()
             , BR.languageData
             ,R.layout.lv_item_language) {
-            override fun onViewItemSetting(view: View, item: Language, position: Int) {
-                super.onViewItemSetting(view, item, position)
+            override fun onViewItemSetting(holder: BaseViewHolder, view: View, item: Language, position: Int) {
+                super.onViewItemSetting(holder, view, item, position)
 
                 view.setOnClickListener {
                     binding.mainVM?.setLanguageIndex(position)
@@ -64,30 +64,8 @@ class LanguageSelectDialog : BaseDialog() {
             Timber.d("languageAdapter init :".plus("size").plus(it.size))
 
             languageAdapter.getData().addAll(it)
-            languageAdapter.getData().addAll(it)
-            languageAdapter.getData().addAll(it)
         }
 
-        binding.layoutMain.setTransitionListener(object : MotionLayout.TransitionListener{
-            override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {
-
-            }
-
-            override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {
-
-            }
-
-            override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {
-                Timber.d("aaaa".plus(p1))
-                Timber.d("aaaa".plus(p2))
-                Timber.d("aaaa".plus(p3))
-            }
-
-            override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
-            }
-
-        })
-//        binding.layoutContent.transitionToEnd()
         binding.layoutMain.transitionToEnd()
 
         return binding.root

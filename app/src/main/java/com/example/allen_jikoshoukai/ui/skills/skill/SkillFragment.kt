@@ -29,8 +29,8 @@ class SkillFragment : BaseFragment(){
         , BR.skillData
         , R.layout.lv_item_skills
     ) {
-        override fun onViewItemSetting(view: View, item: Skill, position: Int) {
-            super.onViewItemSetting(view, item, position)
+        override fun onViewItemSetting(holder: BaseViewHolder, view: View, item: Skill, position: Int) {
+            super.onViewItemSetting(holder, view, item, position)
 
             view.setOnClickListener {
                 skillsViewModel.skillIndex.value = position
@@ -69,6 +69,6 @@ class SkillFragment : BaseFragment(){
     }
 
     override fun onOptionItemBackClicked(item: MenuItem?) {
-        getSafeNavController()?.navigateUp()
+        getSafeNavController()?.navigate(R.id.nav_self_introduction)
     }
 }

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="backgroundData"
+            type="com.example.allen_jikoshoukai.remote.model.Background" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:elevation="5dp">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.05"
+                android:id="@+id/gl_left_border_01"/>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.95"
+                android:id="@+id/gl_right_border_01"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_sort_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/gl_left_border_01"
+                android:src="@{backgroundData.priority == 0? @drawable/ic_background_sort_header:backgroundData.priority == 999? @drawable/ic_background_sort_footer:@drawable/ic_background_sort_content}"
+                app:setHeightPercent="@{backgroundData.priority == 0? 0.9f:backgroundData.priority == 999? 0.9f:1.0f}"
+                app:setVerticalBias="@{backgroundData.priority == 0? 1.0f:backgroundData.priority == 999? 0.0f:1.0f}"
+                android:scaleType="fitXY" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_start_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_sort_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:textSize="12sp"
+                android:textStyle="italic"
+                android:textColor="@color/dialogListItemColor"
+                android:text="@{backgroundData.startTime}"/>
+
+          <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_company_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_start_time"
+                app:layout_constraintStart_toEndOf="@id/iv_sort_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/dialogListItemColor"
+                android:text="@{backgroundData.name}"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_describe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_company_name"
+                app:layout_constraintStart_toEndOf="@id/iv_sort_icon"
+                app:layout_constraintEnd_toEndOf="@id/gl_right_border_01"
+                android:layout_marginTop="8dp"
+                app:layout_constraintHorizontal_bias="0"
+                android:layout_marginStart="24dp"
+                android:textSize="18sp"
+                android:textColor="@color/dialogListItemColor"
+                android:gravity="center_horizontal"
+                android:text="@{backgroundData.describe}"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_end_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_describe"
+                app:layout_constraintStart_toEndOf="@id/iv_sort_icon"
+                app:layout_constraintEnd_toEndOf="@id/gl_right_border_01"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:textSize="12sp"
+                android:textColor="@color/dialogListItemColor"
+                android:textStyle="italic"
+                android:text="@{backgroundData.endTime}"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

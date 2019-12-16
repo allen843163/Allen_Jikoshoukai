@@ -41,12 +41,12 @@ open class MySimpleAdapter<T>(
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         holder.binding.setVariable(brId, itemDatas[position])
 
-        onViewItemSetting(holder.binding.root, itemDatas[position], position)
+        onViewItemSetting(holder ,holder.binding.root, itemDatas[position], position)
 
         holder.binding.executePendingBindings()
     }
 
-    open fun onViewItemSetting(view: View, item: T, position: Int) {
+    open fun onViewItemSetting(holder: BaseViewHolder, view: View, item: T, position: Int) {
 
     }
 

@@ -30,8 +30,8 @@ class CategoryFragment : BaseFragment() {
         , BR.categoryData
         , R.layout.lv_item_skill_category
     ) {
-        override fun onViewItemSetting(view: View, item: Category, position: Int) {
-            super.onViewItemSetting(view, item, position)
+        override fun onViewItemSetting(holder: BaseViewHolder, view: View, item: Category, position: Int) {
+            super.onViewItemSetting(holder, view, item, position)
 
             view.setOnClickListener {
                 skillsViewModel.categoryIndex.value = position

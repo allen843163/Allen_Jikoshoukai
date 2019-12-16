@@ -17,4 +17,6 @@
 
     <color name="textDeepBlack">#000000</color>
 
+    <color name="colorBackgroundSortColor">#FF9900</color>
+
 </resources>
