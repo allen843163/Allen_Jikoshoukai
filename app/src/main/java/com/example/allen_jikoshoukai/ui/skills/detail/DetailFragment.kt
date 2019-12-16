@@ -32,6 +32,7 @@ class DetailFragment : BaseFragment() {
     private val skillsViewModel : SkillsViewModel by sharedViewModel()
 
     lateinit var binding : ViewpagerSkillDetailBinding
+
     var detailAdapter = object : MySimpleAdapter<Detail>(
         mutableListOf()
         , BR.detailData

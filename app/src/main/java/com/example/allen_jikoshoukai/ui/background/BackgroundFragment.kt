@@ -50,5 +50,4 @@ class BackgroundFragment : BaseFragment() {
     override fun onOptionItemBackClicked(item: MenuItem?) {
         getSafeNavController()?.navigate(R.id.nav_self_introduction)
     }
-
 }

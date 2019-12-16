@@ -49,6 +49,6 @@ class EducationFragment : BaseFragment() {
     }
 
     override fun onOptionItemBackClicked(item: MenuItem?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        getSafeNavController()?.navigate(R.id.nav_self_introduction)
     }
 }

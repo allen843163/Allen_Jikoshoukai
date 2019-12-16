@@ -77,7 +77,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
         binding.includeContentGlobal.fab_child_language.setOnClickListener{
             when(navController.currentDestination?.id != R.id.nav_language_select) {
                 true -> {

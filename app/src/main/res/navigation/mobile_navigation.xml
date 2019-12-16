@@ -51,15 +51,15 @@
 
     <fragment
         android:id="@+id/nav_hobbies"
-        android:name="com.example.allen_jikoshoukai.ui.share.ShareFragment"
+        android:name="com.example.allen_jikoshoukai.ui.hobbies.HobbiesFragment"
         android:label="@string/menu_hobbies"
-        tools:layout="@layout/fragment_share" />
+        tools:layout="@layout/fragment_hobbies" />
 
     <fragment
         android:id="@+id/nav_interests"
-        android:name="com.example.allen_jikoshoukai.ui.send.SendFragment"
+        android:name="com.example.allen_jikoshoukai.ui.interests.InterestsFragment"
         android:label="@string/menu_interests"
-        tools:layout="@layout/fragment_send" />
+        tools:layout="@layout/fragment_interests" />
 
     <dialog
         android:id="@+id/nav_language_select"
