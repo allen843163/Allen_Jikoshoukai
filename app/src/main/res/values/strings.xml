@@ -13,4 +13,6 @@
     <string name="menu_education">Education</string>
     <string name="menu_hobbies">Hobbies</string>
     <string name="menu_interests">Interests</string>
+
+    <string name="test123">test123</string>
 </resources>
