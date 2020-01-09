@@ -29,6 +29,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:layout_margin="@dimen/fab_margin">
 
         <androidx.constraintlayout.motion.widget.MotionLayout
@@ -94,7 +96,7 @@
                 android:padding="5dp"
                 android:background="@drawable/bg_fab_btn_main"
                 android:scaleType="centerCrop"
-                android:elevation="3dp"/>
+                android:elevation="5dp"/>
 
         </androidx.constraintlayout.motion.widget.MotionLayout>
 

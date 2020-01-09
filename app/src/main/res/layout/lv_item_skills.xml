@@ -19,20 +19,69 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:paddingStart="16dp"
-            android:elevation="5dp">
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp">
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.constraintlayout.widget.Guideline
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:textSize="18sp"
-                android:textColor="@color/dialogListItemColor"
-                android:text="@{skillData.name}"/>
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.03"
+                android:id="@+id/gl_left_border_01"/>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.97"
+                android:id="@+id/gl_right_border_01"/>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.95"
+                android:id="@+id/gl_bottom_border_01"/>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.05"
+                android:id="@+id/gl_top_border_01"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/gl_left_border_01"
+                app:layout_constraintEnd_toEndOf="@id/gl_right_border_01"
+                app:layout_constraintTop_toTopOf="@id/gl_top_border_01"
+                app:layout_constraintBottom_toBottomOf="@id/gl_bottom_border_01"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="8dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:textSize="18sp"
+                        android:textColor="@color/dialogListItemColor"
+                        android:text="@{skillData.name}"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

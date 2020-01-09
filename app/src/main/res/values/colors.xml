@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#844200</color>
-    <color name="colorPrimaryDark">#844200</color>
-    <color name="colorPrimaryLight">#BF8030</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryLight">#C5CAE9</color>
+    <color name="colorAccent">#448AFF</color>
     <color name="colorPrimaryRipple">#666666</color>
 
-    <color name="backgroundPrimary">#F5F5DC</color>
+    <color name="backgroundPrimary">#E8EAF6</color>
     <color name="backgroundDialogWindow">#38000000</color>
     <color name="backgroundDialogPrimary">#FFFFFF</color>
     <color name="dialogPrimaryStrokeColor">#AAAAAA</color>
 
-    <color name="dialogTitleColor">#000000</color>
-    <color name="dialogButtonColor">#000000</color>
-    <color name="dialogListItemColor">#222222</color>
+    <color name="dialogTitleColor">#212121</color>
+    <color name="dialogButtonColor">#212121</color>
+    <color name="dialogListItemColor">#757575</color>
 
-    <color name="textDeepBlack">#000000</color>
+    <color name="textDeepBlack">#212121</color>
 
-    <color name="colorBackgroundSortColor">#FF9900</color>
+    <color name="colorBackgroundSortColor">#8C9EFF</color>
 
 </resources>
