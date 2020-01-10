@@ -35,6 +35,10 @@ class LaunchFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Timber.d("onCreateView")
+
+        getMainVM().init()
+
         getMainVM().actionBarVisibilityController.value = false
 
         binding = FragmentLaunchBinding.inflate(inflater)

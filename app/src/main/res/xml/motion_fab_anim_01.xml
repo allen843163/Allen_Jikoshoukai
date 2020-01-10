@@ -42,7 +42,7 @@
             <PropertySet android:alpha="0.0"/>
         </Constraint>
 
-        <Constraint android:id="@id/fab_child_close" >
+        <Constraint android:id="@id/fab_child_refresh" >
             <Transform android:rotation="-180" android:translationY="85dp"/>
             <PropertySet android:alpha="0.0"/>
         </Constraint>
@@ -63,7 +63,7 @@
             <PropertySet android:alpha="0.6"/>
         </Constraint>
 
-        <Constraint android:id="@id/fab_child_close" >
+        <Constraint android:id="@id/fab_child_refresh" >
             <Transform android:rotation="0" android:translationY="0dp"/>
             <PropertySet android:alpha="0.6"/>
         </Constraint>

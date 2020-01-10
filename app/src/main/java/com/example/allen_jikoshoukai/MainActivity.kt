@@ -84,6 +84,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
+        binding.includeContentGlobal.fab_child_refresh.setOnClickListener {
+            when(navController.currentDestination?.id != R.id.nav_launch) {
+                true -> {
+                    navController.navigate(R.id.nav_launch)
+                }
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

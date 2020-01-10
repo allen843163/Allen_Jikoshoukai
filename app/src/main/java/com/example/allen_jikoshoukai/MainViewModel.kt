@@ -21,6 +21,12 @@ class MainViewModel(application: Application, private val dataModel: MainDataMod
 
     var languageIndex : MutableLiveData<Int> = MutableLiveData(-1)
 
+    fun init() {
+        getIntroductionRes = ObservableField()
+
+        languageIndex = MutableLiveData(-1)
+    }
+
     fun setLanguageIndex(index : Int) {
         languageIndex.value = index
     }
