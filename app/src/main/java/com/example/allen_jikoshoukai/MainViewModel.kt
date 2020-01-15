@@ -4,13 +4,18 @@ import android.app.Application
 import androidx.databinding.ObservableField
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.allen_jikoshoukai.remote.BaseRepo
 import com.example.allen_jikoshoukai.remote.model.IntroductionRes
 import com.example.allen_jikoshoukai.remote.model.Language
 import com.example.allen_jikoshoukai.remote.model.Skill
 import com.example.allen_jikoshoukai.ui.architecture.BaseViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.*
+import okhttp3.internal.wait
+import retrofit2.Response
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
@@ -31,30 +36,61 @@ class MainViewModel(application: Application, private val dataModel: MainDataMod
         languageIndex.value = index
     }
 
+
     fun remoteGetIntroduction() : MutableLiveData<Result<IntroductionRes>>{
-        Timber.d("asdasdasd")
+        if(BuildConfig.isCoroutineMode) {
+            /**
+             * Kotlin Coroutine作法
+             */
+            val result : MutableLiveData<Result<IntroductionRes>> = MutableLiveData()
 
-        val result : MutableLiveData<Result<IntroductionRes>> = MutableLiveData()
+            GlobalScope.launch {
+                delay(2000)
 
-        dataModel.getIntroduction()
-            .delay(2, TimeUnit.SECONDS)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io())
-            .subscribe(
-                {
-                    Timber.d(it.Language[0].Name)
+                Timber.d("Get Introduction by Coroutine")
 
-                    getIntroductionRes.set(it)
+                val response : Result<IntroductionRes> = dataModel.getIntroduction2()
 
-                    result.value = Result.success(it)
-                },
-                {
-                    it.printStackTrace()
+                if(response.isSuccess) {
+                    getIntroductionRes.set(response.getOrNull()!!)
 
-                    result.value = Result.failure(it)
+                    result.postValue(response)
                 }
-            )
+                else {
+                    result.postValue(response)
+                }
+            }.start()
 
-        return result
+            return result
+        }
+        else {
+            /**
+             * RxJava作法
+             */
+            val result : MutableLiveData<Result<IntroductionRes>> = MutableLiveData()
+
+            Timber.d("Get Introduction by Rxjava")
+
+            dataModel.getIntroduction()
+                .delay(2, TimeUnit.SECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(
+                    {
+                        Timber.d(it.Language[0].Name)
+
+                        getIntroductionRes.set(it)
+
+                        result.value = Result.success(it)
+                    },
+                    {
+                        it.printStackTrace()
+
+                        result.value = Result.failure(it)
+                    }
+                )
+
+            return result
+        }
     }
 }
