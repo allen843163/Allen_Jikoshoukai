@@ -5,14 +5,13 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.ui.navigateUp
 import com.example.allen_jikoshoukai.databinding.FragmentSelfIntroductionBinding
 import com.example.allen_jikoshoukai.ui.architecture.BaseFragment
 
 class SelfIntroductionFragment : BaseFragment() {
-    private lateinit var selfIntroductionViewModel: SelfIntroductionViewModel
-
     private lateinit var binding : FragmentSelfIntroductionBinding
 
     override fun onCreateView(
@@ -22,10 +21,12 @@ class SelfIntroductionFragment : BaseFragment() {
     ): View? {
         binding = FragmentSelfIntroductionBinding.inflate(inflater)
 
-        selfIntroductionViewModel =
-            ViewModelProviders.of(this).get(SelfIntroductionViewModel::class.java)
+        getMainVM().languageIndex.observe(this, Observer { index ->
 
-        binding.mainVM = getMainVM()
+            getMainVM().getIntroductionRes.get()?.Language?.get(index)?.let {
+                binding.txtSelfIntroduction.text = it.SelfIntroduction
+            }
+        })
 
         return binding.root
     }

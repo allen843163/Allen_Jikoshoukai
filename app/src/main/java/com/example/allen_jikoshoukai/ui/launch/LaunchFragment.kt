@@ -30,8 +30,6 @@ import timber.log.Timber
 import kotlin.coroutines.suspendCoroutine
 
 class LaunchFragment : BaseFragment() {
-    private val launchViewModel : LaunchViewModel by viewModel()
-
     private lateinit var binding : FragmentLaunchBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,8 +48,6 @@ class LaunchFragment : BaseFragment() {
         getMainVM().actionBarVisibilityController.value = false
 
         binding = FragmentLaunchBinding.inflate(inflater)
-
-
 
         getMainVM().remoteGetIntroduction().observe(this, Observer { result ->
             result.fold(
